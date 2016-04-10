@@ -1,0 +1,45 @@
+createCameraSource() , createCameraSource()
+Manifest.permission.CAMERA [Manifest.permission calls all camera fetures for use]
+ActivityCompat.checkSelfPermission [ActivityCompat checks to see if you have permission]
+ActivityCompat.shouldShowRequestPermissionRationale [ActivityCompat displays request for permission]
+ActivityCompat.requestPermissions [ActivityCompat request permissions to be granted]
+DialogInterface.OnClickListener [DialogInterface Interface used to allow the creator of a dialog to run some code when an item on the dialog is clicked.]
+AlertDialog.Builder [java.lang.Object Creates a builder for an alert dialog that uses the default alert dialog theme]
+CameraSource.Builder [com.google.android.gms.vision.CameraSource.Builder Creates a camera source builder with the supplied context and detector. Camera preview images will be streamed to the associated detector upon starting the camera source.]
+.setRequestedPreviewSize() [com.google.android.gms.vision.CameraSource.Builder  Sets the desired width and height of the camera frames in pixels. If the exact desired values are not available options, the best matching available options are selected. Also, we try to select a preview size which corresponds to the aspect ratio of an associated full picture size, if applicable. Default: 1024x768.]
+.setFacing() [com.google.android.gms.vision.CameraSource.Builder Sets the camera to use (either CAMERA_FACING_BACK or CAMERA_FACING_FRONT). Default: back facing.]
+.setRequestedFps() [com.google.android.gms.vision.CameraSource.Builder Sets the requested frame rate in frames per second. If the exact requested value is not not available, the best matching available value is selected. Default: 30.]
+.build() [com.google.android.gms.vision.CameraSource.Builder  Creates an instance of the camera source.]
+requestCameraPermission()
+getApplicationContext()
+FaceDetector.Builder(context).setClassificationType(FaceDetector.ALL_CLASSIFICATIONS).build()
+
+detector.isOperational() [com.google.android.gms.vision.Detector<T> Indicates whether the detector has all of the required dependencies available locally in order to do detection.]
+
+onResume()
+startCameraSource()
+onPause()
+mPreview.stop()
+onDestroy()
+mCameraSource.release()
+onRequestPermissionsResult()
+.onRequestPermissionsResult()
+Log.d()
+builder.setTitle().setMessage().setPositiveButton().show()
+startCameraSource()
+.isGooglePlayServicesAvailable() [com.google.android.gms.common.GoogleApiAvailibility Verifies that Google Play services is installed and enabled on this device, and that the version installed on this device is no older than the one required by this client. Returns status code indicating whether there was an error. Can be one of following in ConnectionResult: SUCCESS, SERVICE_MISSING, SERVICE_UPDATING, SERVICE_VERSION_UPDATE_REQUIRED, SERVICE_DISABLED, SERVICE_INVALID]
+getApplicationContext()
+ConnectionResult.SUCCESS [com.google.android.gms.common.ConnectionResult The connection was successful.]
+GoogleApiAvailability.getInstance()[com.google.android.gms.common.GoogleApiAvailibility Returns the singleton instance of GoogleApiAvailability.]
+.getErrorDialog() [com.google.android.gms.common.GoogleApiAvailibility Returns a dialog to address the provided errorCode. The returned dialog displays a localized message about the error and upon user confirmation (by tapping on dialog) will direct them to the Play Store if Google Play services is out of date or missing, or to system settings if Google Play services is disabled on the device.]
+
+dlg.show()
+
+mPreview.start
+mCameraSource.release()
+GraphicFaceTracker(mGraphicOverlay)
+onNewItem()
+mOverlay.add(mFaceGraphic)
+mFaceGraphic.updateFace(face)
+onMissing(FaceDetector.Detections<Face> detectionResults)
+mOverlay.remove(mFaceGraphic)
