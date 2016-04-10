@@ -12,7 +12,10 @@ CameraSource.Builder [com.google.android.gms.vision.CameraSource.Builder Creates
 .build() [com.google.android.gms.vision.CameraSource.Builder  Creates an instance of the camera source.]
 requestCameraPermission()
 getApplicationContext()
-FaceDetector.Builder(context).setClassificationType(FaceDetector.ALL_CLASSIFICATIONS).build()
+FaceDetector.Builder() [com.google.android.gms.vision.face.FaceDetector.Builder Creates a face detector builder with the supplied context.]
+.setClassificationType()[com.google.android.gms.vision.face.FaceDetector.Builder Indicates whether to run additional classifiers for characterizing attributes such as “smiling” and “eyes open”. Default: NO_CLASSIFICATIONS]
+FaceDetector.ALL_CLASSIFICATIONS() [com.google.android.gms.vision.face.FaceDetector Performs "eyes open" and "smiling" classification .Constant Value: 1]
+.build() [com.google.android.gms.vision.face.FaceDetector.Builder Builds a face detector instance.]
 
 detector.isOperational() [com.google.android.gms.vision.Detector<T> Indicates whether the detector has all of the required dependencies available locally in order to do detection.]
 
@@ -43,3 +46,11 @@ mOverlay.add(mFaceGraphic)
 mFaceGraphic.updateFace(face)
 onMissing(FaceDetector.Detections<Face> detectionResults)
 mOverlay.remove(mFaceGraphic)
+
+
+
+
+
+
+
+
