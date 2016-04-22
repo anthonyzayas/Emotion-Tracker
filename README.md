@@ -5,3 +5,4 @@ Emotion-Tracker is a python program which uses OpenCV to connect to your webcam.
 Big thanks to @momogary and @liy9393 for the code which this project was based on
 Using microsoft emotion free api. Get an api key here:  https://www.microsoft.com/cognitive-services/en-us/emotion-api
 
+http://s31.postimg.org/rwfkhyf4b/Untitled.jpg   http://s31.postimg.org/wjlmjq2h7/Untitled2.jpg
