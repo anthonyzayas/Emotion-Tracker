@@ -4,10 +4,7 @@ Using microsoft emotion free api. Get an api key here:  https://www.microsoft.co
 '''
 import cv2
 from cv2 import cv
-from Tkinter import *
-import tkMessageBox
 import httplib, urllib, base64
-import tkFileDialog
 def faceDetection(image):
     
     headers = {
