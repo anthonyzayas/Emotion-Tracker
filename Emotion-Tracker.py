@@ -26,13 +26,10 @@ def faceDetection(image):
     
     try:
         conn = httplib.HTTPSConnection('api.projectoxford.ai')
-        print "connect host"
 
         conn.request("POST", "/emotion/v1.0/recognize" , data , headers)
-        print "sent request"
 
         response = conn.getresponse()
-        print "get response"
 
         data = response.read()
         #print(data)
@@ -40,7 +37,6 @@ def faceDetection(image):
         #print type(data)
         #print data
         conn.close()
-        print "close connection"
     except Exception as e:
         print("[Errno {0}] {1}".format(e.errno, e.strerror))
 
@@ -48,7 +44,6 @@ def faceDetection(image):
 
 def drawBBox(response , image):
     #from PIL import Image
-    print "draw bounding box..."
     '''
     response = [
         {"faceRectangle":{"height":113,"left":624,"top":109,"width":113},"scores":{"anger":3.094097E-06,"contempt":5.47389654E-08,"disgust":1.40311486E-05,"fear":2.1335E-09,"happiness":0.9999826,"neutral":1.21930185E-07,"sadness":2.03058121E-08,"surprise":7.509437E-08}},
@@ -92,8 +87,6 @@ def drawBBox(response , image):
     
 #open webcam and capture images   
 class Picture():
-    
-    
     
     #creates a window named preview in windows
     cv2.namedWindow("preview")
