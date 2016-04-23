@@ -12,13 +12,7 @@ def faceDetection(image):
         'Content-Type': 'application/octet-stream',
         'Ocp-Apim-Subscription-Key': 'XXXXXXXXXXXXXXXXXXXXXXXXXXX',
     }
-
-    '''
-    params = urllib.urlencode({
-    'url': 'http://i.epochtimes.com/assets/uploads/2011/03/110312195005100445.jpg',
-    })
-    '''
-
+    
     data = open('webcam.jpg', 'rb').read()
     
     try:
