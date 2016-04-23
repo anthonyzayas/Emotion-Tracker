@@ -3,6 +3,11 @@
 Emotion-Tracker is a python program which uses OpenCV to connect to your webcam. After capturing your picture with the space bar, it sends your picture to be processed by the Microsoft emotion API. Then it displays a picture with a prediction of your emotion.
 
 Big thanks to @momogary and @liy9393 for the code which this project was based on.
+Their projects can be viewed here:
+
+https://github.com/Sheofeen/FaceEmotionDetection/tree/6971bb3468c79e07d75f0296df41b6156608353f
+https://github.com/liy9393/emotion-detection
+
 Our project uses the Microsoft emotion free api. Get an api key here:  https://www.microsoft.com/cognitive-services/en-us/emotion-api
 
 ![](http://s31.postimg.org/rwfkhyf4b/Untitled.jpg)  ![](http://s31.postimg.org/wjlmjq2h7/Untitled2.jpg)
