@@ -13,7 +13,7 @@ def faceDetection(image):
     headers = {
         # Request headers
         'Content-Type': 'application/octet-stream',
-        'Ocp-Apim-Subscription-Key': 'XXXXXXXXXXXXXXXX',
+        'Ocp-Apim-Subscription-Key': 'XXXXXXXXXXXXXXXXXXXXXXXXXXX',
     }
 
     #Opens webcam.jpg in reading binary form ('rb')
