@@ -9,7 +9,9 @@ https://github.com/Sheofeen/FaceEmotionDetection/tree/6971bb3468c79e07d75f0296df
 https://github.com/liy9393/emotion-detection
 
 This project requires
+
 ![Python 2.7](https://www.python.org/download/releases/2.7/)
+
 ![OpenCV](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_setup/py_setup_in_windows/py_setup_in_windows.html) 
 
 This project uses OpenCV 2.3.1
