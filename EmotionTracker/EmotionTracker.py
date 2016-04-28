@@ -13,11 +13,11 @@ def faceDetection(image):
     headers = {
         # Request headers
         'Content-Type': 'application/octet-stream',
-        'Ocp-Apim-Subscription-Key': 'XXXXXXXXXXXXXXXXXXXXXXX',
+        'Ocp-Apim-Subscription-Key': 'XXXXXXXXXXXXXXXX',
     }
 
     #Opens webcam.jpg in reading binary form ('rb')
-    data = open('webcam.jpg', 'rb').read()
+    data = open(image, 'rb').read()
     
     try:
         '''
@@ -83,7 +83,7 @@ def drawBBox(response , image):
     textGap = 15
 
     #Uses OpenCV to assign webcam.jpg to im variable
-    im = cv2.imread('webcam.jpg')
+    im = cv2.imread(image)
     
     for rect in response:
         #Assigns height variable to https response height
@@ -127,10 +127,10 @@ def drawBBox(response , image):
             cnt += 1
 
     #Creates a window named face detection
-    cv2.namedWindow("Press space to take another picture")
+    cv2.namedWindow("Press any button to close this window")
 
     #Shows webcam.jpg 
-    cv2.imshow("Press space to take another picture", im)
+    cv2.imshow("Press any button to close this window", im)
 
     #Waits for any key to be pressed to destroy the window created by the drawBBox function
     cv2.waitKey(0)

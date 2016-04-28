@@ -79,8 +79,8 @@ class ConfigWindow(Frame):
                 #Saves image with OpenCV method SaveImage. Uses Opencv method fromarray on a mat object frame to convert frame to a jpg
                 cv.SaveImage("webcam.jpg", cv.fromarray(frame))
 
-                #Sets new variable image to webcam.jpg through OpenCV
-                image = cv.LoadImage("webcam.jpg")
+                #Sets new variable image to webcam.jpg 
+                image = "webcam.jpg"
 
                 #Calls faceDetection function which takes the image object to process it. Assigns this https response to response variable
                 response = EmotionTracker.faceDetection(image)
