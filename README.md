@@ -6,6 +6,7 @@ Big thanks to @momogary and @liy9393 for the code which this project was based o
 Their projects can be viewed here:
 
 https://github.com/Sheofeen/FaceEmotionDetection/tree/6971bb3468c79e07d75f0296df41b6156608353f
+
 https://github.com/liy9393/emotion-detection
 
 This project requires
