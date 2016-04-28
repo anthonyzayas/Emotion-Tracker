@@ -123,14 +123,14 @@ def drawBBox(response , image):
             Else the tuple value for the percentage of the emotion is put
             at the bottom right hand corner of the box in red
             '''
-            cv2.putText(im, "%s %.2f" % ( tup[0] ,tup[1]) ,( start_point[0], end_point[1] + textGap * cnt ), font, 0.4,(0,0,255),1)
+            cv2.putText(im, "%s %.2f %%" % ( tup[0] ,tup[1] * 100) ,( start_point[0], end_point[1] + textGap * cnt ), font, 0.5,(0,0,255),1)
             cnt += 1
 
     #Creates a window named face detection
-    cv2.namedWindow("face detection")
+    cv2.namedWindow("Press space to take another picture")
 
     #Shows webcam.jpg 
-    cv2.imshow("face detection", im)
+    cv2.imshow("Press space to take another picture", im)
 
     #Waits for any key to be pressed to destroy the window created by the drawBBox function
     cv2.waitKey(0)
