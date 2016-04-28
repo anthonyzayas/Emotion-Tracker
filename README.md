@@ -21,4 +21,4 @@ Our project uses the Microsoft emotion free api. Get an api key here:
 
 https://www.microsoft.com/cognitive-services/en-us/emotion-api
 
-![](http://s31.postimg.org/rwfkhyf4b/Untitled.jpg)  ![](http://s31.postimg.org/wjlmjq2h7/Untitled2.jpg)
+![](http://s32.postimg.org/xnl0y9qd1/Untitled.png)  ![](http://s32.postimg.org/k1owjgy45/xdd.png)
