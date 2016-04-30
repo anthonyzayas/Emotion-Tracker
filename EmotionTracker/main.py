@@ -1,94 +1,87 @@
-'''
-Big thanks to @momogary and @liy9393 for the code which this project was based on
-Using microsoft emotion free api. Get an api key here:  https://www.microsoft.com/cognitive-services/en-us/emotion-api
-'''
+from Tkinter import *
 import cv2
+import operator
 from cv2 import cv
 import EmotionTracker
-import tkFileDialog
-from Tkinter import *
+import Tkinter as tk
 import tkMessageBox
-class ConfigWindow(Frame):
-    def __init__(self):
-        Frame.__init__(self)
-        self.master.title('Face and Emotion Detection') 
-        self.master.geometry('500x300') 
-        self.master.resizable(False, False) 
-        self.pack(side = TOP,expand = YES,fill = BOTH) 
-        bt = Button(self,text='Choose existing file',command=self.showWin32Dialog) 
-        bt.pack(side=TOP,expand=NO,fill=Y,pady=20,padx=20)
-        bt1 = Button(self,text='Take picture',command=self.takePicture) 
-        bt1.pack(side=TOP,expand=NO,fill=Y,pady=20,padx=20)
-        
-    def showWin32Dialog(self):
-        filetypes = ["jpg" , "bmp" , "png"]
-        image = tkFileDialog.askopenfilename(initialdir = r'C:\Users\v-jingwc\Desktop\\')
-        if image.split(".")[-1] in filetypes:
-            response = EmotionTracker.faceDetection(image)
-            EmotionTracker.drawBBox(response , image)
-        elif image == "":
-            pass
-        else:
-            tkMessageBox.showinfo('Warning','this app just support image of type .jpg/.bmp/.png')
+from collections import deque
+from PIL import Image, ImageTk
+import tkFileDialog
+import time
 
-    def takePicture(self):
-        #Creates a variable called vc which holds the Video capture of the first detected device. This is noted by the (0).
-        vc = cv2.VideoCapture(0)
-        
-        '''
-        try to get the first frame
-        if video capture is opened rval is set to true and a new mat variable named frame is set to
-        vc.read
-        '''
-        
-        if vc.isOpened(): 
-            rval, frame = vc.read()
-        else:
-            rval = False
+def quit_(root):
+    root.destroy()
 
-        while rval:
-            
-            '''
-            while rval is true:
-            Use opencv method imshow to show the frame in a box called preview
-            '''
-            cv2.imshow("Press space to take a picture, ESC to exit", frame)
-            
-            #reads frame by frame through the video capture while a webcam is open
-            rval, frame = vc.read()
-            
-            '''
-            Writing waitKey(40) will make the program wait for 40 millisecond.
-            In this duration it will also check whether any key is pressed or not .
-            If any key is pressed than this will return the ASCII value of that pressed key. 
-            As explained in the OpenCV documentation, HighGui (imshow() is a function of HighGui)
-            needs a call of waitKey regularly, in order to process its event loop.
-            '''
-            key = cv2.waitKey(40)
-            ESCKey = 27
-            Space = 32
-            
-            #ASCII value of esc is 27. Pressing it here will exit the program. 
-            if key == ESCKey: 
-               cv2.destroyAllWindows()
-               break
+def save():
+    rval, frame = cam.read()
+    cv2.imwrite("webcam.jpg", frame);
+    #Sets new variable image to webcam.jpg 
+    image = "webcam.jpg"
 
-            #ASCII value of space is 32. 
-            if key == Space:
-                
-                #Saves image with OpenCV method SaveImage. Uses Opencv method fromarray on a mat object frame to convert frame to a jpg
-                cv.SaveImage("webcam.jpg", cv.fromarray(frame))
-
-                #Sets new variable image to webcam.jpg 
-                image = "webcam.jpg"
-
-                #Calls faceDetection function which takes the image object to process it. Assigns this https response to response variable
-                response = EmotionTracker.faceDetection(image)
+    #Calls faceDetection function which takes the image object to process it. Assigns this https response to response variable
+    response = EmotionTracker.faceDetection(image)
                 
 
-                #calls drawBBox function which takes the response object and image object to process.
-                EmotionTracker.drawBBox(response , image)
+    #calls drawBBox function which takes the response object and image object to process.
+    EmotionTracker.drawBBox(response , image)
+
+def showWin32Dialog():
+    filetypes = ["jpg" , "bmp" , "png"]
+    image = tkFileDialog.askopenfilename(initialdir = r'C:\Users\v-jingwc\Desktop\\')
+    if image.split(".")[-1] in filetypes:
+        response = EmotionTracker.faceDetection(image)
+        EmotionTracker.drawBBox(response , image)
+    elif image == "":
+        pass
+    else:
+        tkMessageBox.showinfo('Warning','this app just support image of type .jpg/.bmp/.png')
+
+def update_image(image_label, cam):
+   (readsuccessful, f) = cam.read()
+   gray_im = cv2.cvtColor(f, cv2.COLOR_BGR2RGBA)
+   a = Image.fromarray(gray_im)
+   b = ImageTk.PhotoImage(image=a)
+   image_label.configure(image=b)
+   image_label._image_cache = b  # avoid garbage collection
+   root.update()
+
+
+def update_fps(fps_label):
+    frame_times = fps_label._frame_times
+    frame_times.rotate()
+    frame_times[0] = time.time()
+    sum_of_deltas = frame_times[0] - frame_times[-1]
+    count_of_deltas = len(frame_times) - 1
+    try:
+       fps = int(float(count_of_deltas) / sum_of_deltas)
+    except ZeroDivisionError:
+        fps = 0
+    fps_label.configure(text='FPS: {}'.format(fps))
+
+
+def update_all(root, image_label, cam, fps_label):
+    update_image(image_label, cam)
+    update_fps(fps_label)
+    root.after(20, func=lambda: update_all(root, image_label, cam, fps_label))
+
 
 if __name__ == '__main__':
-    ConfigWindow().mainloop()
-    
+    root = tk.Tk()
+    root.title("Emotion Detection")
+    image_label = tk.Label(master=root)# label for the video frame
+    image_label.pack()
+    cam = cv2.VideoCapture(0)
+    fps_label = tk.Label(master=root)# label for fps
+    fps_label._frame_times = deque([0]*5)  # arbitrary 5 frame average FPS
+    fps_label.pack()
+    existing_button = tk.Button(master=root, text='Choose existing file',command=lambda: showWin32Dialog())
+    existing_button.pack(side=LEFT, expand = YES, fill = X)
+    save_button = tk.Button(master=root, text='Take picture',command=lambda: save())
+    save_button.pack(side=LEFT, expand = YES, fill = X)
+    # quit button
+    quit_button = tk.Button(master=root, text='Quit',command=lambda: quit_(root))
+    quit_button.pack(side=LEFT, expand = YES, fill = X)
+    # setup the update callback
+    root.after(0, func=lambda: update_all(root, image_label, cam, fps_label))
+    root.mainloop()
