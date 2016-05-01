@@ -19,7 +19,7 @@ This project requires
 
 This project uses OpenCV 2.3.1
 
-Our project uses the Microsoft emotion free api. Get an api key here:  
+This project uses the Microsoft emotion free api. Get an api key here:  
 
 https://www.microsoft.com/cognitive-services/en-us/emotion-api
 
