@@ -15,6 +15,8 @@ This project requires
 
 ![OpenCV](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_setup/py_setup_in_windows/py_setup_in_windows.html) 
 
+![Python Imaging Library](http://www.pythonware.com/products/pil/)
+
 This project uses OpenCV 2.3.1
 
 Our project uses the Microsoft emotion free api. Get an api key here:  
