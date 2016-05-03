@@ -48,14 +48,15 @@ def showWin32Dialog():
     else:
         tkMessageBox.showinfo('Warning','this app just support image of type .jpg/.bmp/.png')
         
-
+#Updates the image from the cam videocapture
 def update_image(image_label, cam):
    (readsuccessful, f) = cam.read()
    gray_im = cv2.cvtColor(f, cv2.COLOR_BGR2RGBA)
    a = Image.fromarray(gray_im)
    b = ImageTk.PhotoImage(image=a)
    image_label.configure(image=b)
-   image_label._image_cache = b  # avoid garbage collection
+   # avoid garbage collection
+   image_label._image_cache = b  
    root.update()
 
 #Function which calculates fps and returns the fps label
@@ -71,7 +72,7 @@ def update_fps(fps_label):
         fps = 0
     fps_label.configure(text='FPS: {}'.format(fps))
 
-#Function which updates the video capture and fps label
+#Function which updates the video capture, fps label, and image label
 def update_all(root, image_label, cam, fps_label):
     update_image(image_label, cam)
     update_fps(fps_label)
@@ -80,12 +81,17 @@ def update_all(root, image_label, cam, fps_label):
 #Main function which instantiates program
 if __name__ == '__main__':
     root = tk.Tk()
-    root.title("Emotion Logic") # Title for gui
-    image_label = tk.Label(master=root)# label for the video frame
+    # Title for gui
+    root.title("Emotion Logic") 
+    # label for the video frame
+    image_label = tk.Label(master=root)
     image_label.pack()
-    cam = cv2.VideoCapture(0) #Opens videocapture and sets it to cam
-    fps_label = tk.Label(master=root)# label for fps
-    fps_label._frame_times = deque([0]*5)  # arbitrary 5 frame average FPS
+    #Opens videocapture and sets it to cam
+    cam = cv2.VideoCapture(0) 
+    # label for fps
+    fps_label = tk.Label(master=root)
+    # arbitrary 5 frame average FPS
+    fps_label._frame_times = deque([0]*5)  
     fps_label.pack()
     #Button for choosing an existing file
     existing_button = tk.Button(master=root, text='Choose existing file',command=lambda: showWin32Dialog())
