@@ -1,4 +1,5 @@
 # Emotion-Tracker
+[![Emotion Logic](http://s32.postimg.org/9vm58nq79/Emotion_Logic_by_Emote.jpg)](http://sendvid.com/vlwo26xy)
 
 Emotion-Tracker is a python program which processes images and sends them to be processed by the Microsoft emotion API. Then it displays a picture with a prediction of the emotion presented in the picture. Emotion-Tracker can process pre-existing pictures and take pictures with your webcam to be processed. 
 
