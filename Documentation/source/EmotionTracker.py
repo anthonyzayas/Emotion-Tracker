@@ -7,14 +7,13 @@ import operator
 from cv2 import cv
 import httplib, urllib, base64
 
-#facedetection function
 def faceDetection(image):
-    """Sends picture to Microsoft API and returns a JSON response"""
+
     #Sets up request from Microsoft API
     headers = {
         # Request headers
         'Content-Type': 'application/octet-stream',
-        'Ocp-Apim-Subscription-Key': 'XXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+        'Ocp-Apim-Subscription-Key': '7e5ff0f7e7464089826f1418d88958ab',
     }
 
     #Opens webcam.jpg in reading binary form ('rb')

@@ -1,0 +1,3 @@
+Emotion Tracker Tutorial
+================================
+Emotion tracker works by sending a picture to the Microsoft api to be processed. This image is analyzed by Microsoft, and we are returned a json string. This string is used to create a tuple of emotions which can be sorted through. The emotions with a prediction rating greater than %10 are displayed by the drawbbox function. This function draws a blue box around the image and displays the emotions that were predicted. The program also utilizes OpenCV to take pictures which can then be processed by the Microsoft api. Tkinter buttons are included to make a gui for the user.

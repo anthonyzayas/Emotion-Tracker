@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Auto Generated Documentation &mdash; Emotion Logic 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Emotion Logic 1.0.0 documentation" href="index.html" />
+    <link rel="prev" title="Project Summary" href="project.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-main">
+<span id="auto-generated-documentation"></span><h1>Auto Generated Documentation<a class="headerlink" href="#module-main" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="main.quit_">
+<code class="descclassname">main.</code><code class="descname">quit_</code><span class="sig-paren">(</span><em>root</em><span class="sig-paren">)</span><a class="headerlink" href="#main.quit_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function which creates a quit button</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="main.save">
+<code class="descclassname">main.</code><code class="descname">save</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#main.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function which saves a picture from webcam and sends it to Microsoft Api</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="main.showWin32Dialog">
+<code class="descclassname">main.</code><code class="descname">showWin32Dialog</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#main.showWin32Dialog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function which allows the selection of pre-existing files to be processed</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="main.update_all">
+<code class="descclassname">main.</code><code class="descname">update_all</code><span class="sig-paren">(</span><em>root</em>, <em>image_label</em>, <em>cam</em>, <em>fps_label</em><span class="sig-paren">)</span><a class="headerlink" href="#main.update_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function which updates the video capture, fps label, and image label</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="main.update_fps">
+<code class="descclassname">main.</code><code class="descname">update_fps</code><span class="sig-paren">(</span><em>fps_label</em><span class="sig-paren">)</span><a class="headerlink" href="#main.update_fps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function which calculates fps and returns the fps label</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="main.update_image">
+<code class="descclassname">main.</code><code class="descname">update_image</code><span class="sig-paren">(</span><em>image_label</em>, <em>cam</em><span class="sig-paren">)</span><a class="headerlink" href="#main.update_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the image from the cam videocapture</p>
+</dd></dl>
+
+<span class="target" id="module-EmotionTracker"></span><p>Big thanks to &#64;momogary and &#64;liy9393 for the code which this project was based on
+Using microsoft emotion free api. Get an api key here:  <a class="reference external" href="https://www.microsoft.com/cognitive-services/en-us/emotion-api">https://www.microsoft.com/cognitive-services/en-us/emotion-api</a></p>
+<dl class="function">
+<dt id="EmotionTracker.drawBBox">
+<code class="descclassname">EmotionTracker.</code><code class="descname">drawBBox</code><span class="sig-paren">(</span><em>response</em>, <em>image</em><span class="sig-paren">)</span><a class="headerlink" href="#EmotionTracker.drawBBox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Example response:</p>
+<dl class="docutils">
+<dt>response = [</dt>
+<dd><dl class="first last docutils">
+<dt>{&#8220;faceRectangle&#8221;:{&#8220;height&#8221;:XXX,&#8221;left&#8221;:XXX,&#8221;top&#8221;:XXX,&#8221;width&#8221;:XXX},</dt>
+<dd>&#8220;scores&#8221;:{&#8220;anger&#8221;:X.XXXE-XX,&#8221;contempt&#8221;:X.XXXXE-XX,&#8221;disgust&#8221;:X.XXXXXE-XX,&#8221;fear&#8221;:X.XXXXE-XX,
+&#8220;happiness&#8221;:X.XXXXXE-XX,&#8221;neutral&#8221;:X.XXXXE-XX,&#8221;sadness&#8221;:X.XXXXE-XX,&#8221;surprise&#8221;:X.XXXXE-XX}},</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="EmotionTracker.faceDetection">
+<code class="descclassname">EmotionTracker.</code><code class="descname">faceDetection</code><span class="sig-paren">(</span><em>image</em><span class="sig-paren">)</span><a class="headerlink" href="#EmotionTracker.faceDetection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends picture to Microsoft API and returns a JSON response</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="project.html" title="previous chapter">Project Summary</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/code.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Alex Durso.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="_sources/code.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

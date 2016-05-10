@@ -10,14 +10,13 @@ from PIL import Image, ImageTk
 import tkFileDialog
 import time
 
-#quit function
+#Function to create a quit button
 def quit_(root):
-    """Function which creates a quit button"""
     root.destroy()
     
-#save function
+#Function that creates a button which saves an image 
 def save():
-    """Function which saves a picture from webcam and sends it to Microsoft Api"""
+    #Reads the video capture and creates a mat frame named frame
     rval, frame = cam.read()
     #Translates mat frame to jpg
     cv2.imwrite("webcam.jpg", frame);
@@ -31,9 +30,8 @@ def save():
     #calls drawBBox function which takes the response object and image object to process.
     EmotionTracker.drawBBox(response , image)
 
-#showwin32dialog function
+#Function to choose existing file
 def showWin32Dialog():
-    """Function which allows the selection of pre-existing files to be processed"""
     #Defines acceptable filetypes
     filetypes = ["jpg" , "bmp" , "png"]
     #Sets image to an image chosen in tkfiledialog
@@ -50,19 +48,19 @@ def showWin32Dialog():
     else:
         tkMessageBox.showinfo('Warning','this app just support image of type .jpg/.bmp/.png')
         
+#Updates the image from the cam videocapture
 def update_image(image_label, cam):
-    """Updates the image from the cam videocapture"""
-    (readsuccessful, f) = cam.read()
-    gray_im = cv2.cvtColor(f, cv2.COLOR_BGR2RGBA)
-    a = Image.fromarray(gray_im)
-    b = ImageTk.PhotoImage(image=a)
-    image_label.configure(image=b)
-    # avoid garbage collection
-    image_label._image_cache = b  
-    root.update()
+   (readsuccessful, f) = cam.read()
+   gray_im = cv2.cvtColor(f, cv2.COLOR_BGR2RGBA)
+   a = Image.fromarray(gray_im)
+   b = ImageTk.PhotoImage(image=a)
+   image_label.configure(image=b)
+   # avoid garbage collection
+   image_label._image_cache = b  
+   root.update()
 
+#Function which calculates fps and returns the fps label
 def update_fps(fps_label):
-    """Function which calculates fps and returns the fps label"""
     frame_times = fps_label._frame_times
     frame_times.rotate()
     frame_times[0] = time.time()
@@ -74,14 +72,14 @@ def update_fps(fps_label):
         fps = 0
     fps_label.configure(text='FPS: {}'.format(fps))
 
+#Function which updates the video capture, fps label, and image label
 def update_all(root, image_label, cam, fps_label):
-    """Function which updates the video capture, fps label, and image label"""
     update_image(image_label, cam)
     update_fps(fps_label)
     root.after(20, func=lambda: update_all(root, image_label, cam, fps_label))
 
+#Main function which instantiates program
 if __name__ == '__main__':
-    """Main function which instantiates program"""
     root = tk.Tk()
     # Title for gui
     root.title("Emotion Logic") 
